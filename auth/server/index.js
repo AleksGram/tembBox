@@ -7,6 +7,7 @@ const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
 
+//-- For start mongo : cmd from admin C:\Program Files\MongoDB\Server\4.0\bin> mongod
 //DB Setup
 mongoose.connect('mongodb://localhost:auth/auth', { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
