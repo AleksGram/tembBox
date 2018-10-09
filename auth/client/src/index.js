@@ -9,8 +9,15 @@ import reducers from './reducers';
 import App from './components/App';
 import Welcome from './components/Welcome';
 import Signup from './components/auth/Signup';
+import Signout from './components/auth/Signout';
+import Feature from './components/Feature';
 
-const store = createStore( reducers, {}, applyMiddleware(reduxThunk));
+const store = createStore(
+    reducers,
+    // Initial state. Check Local storage if token exist
+    {  auth: {authenticated: localStorage.getItem('token') }},
+    applyMiddleware(reduxThunk)
+);
 
 ReactDom.render(
     <Provider store={ store }>
@@ -19,6 +26,8 @@ ReactDom.render(
                 {/*we'll have Welcome component as prop inside App component*/}
                 <Route path="/" exact component={ Welcome }/>
                 <Route path="/signup" component={ Signup }/>
+                <Route path="/feature" component={ Feature }/>
+                <Route path="/signout" component={ Signout }/>
             </App>
         </BrowserRouter>
     </Provider>,

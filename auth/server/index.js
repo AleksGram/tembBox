@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 //-- For start mongo : cmd from admin C:\Program Files\MongoDB\Server\4.0\bin> mongod
 //DB Setup
@@ -14,6 +15,7 @@ mongoose.set('useCreateIndex', true);
 
 // App setup
 app.use(morgan('combined')); //login incoming requests using for debugging
+app.use(cors());//allowing cross requests
 app.use(bodyParser.json({type: '*/*'}));
 router(app);
 
